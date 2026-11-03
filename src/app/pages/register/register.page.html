@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark" class="top-bar">
+    <ion-title class="brand-title">Uber</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="register-content">
+  <div class="register-container">
+    
+    <h2 class="form-title">Crear tu cuenta de Uber</h2>
+    <p class="subtitle">
+      ¿Ya tienes una cuenta de Uber? 
+      <a (click)="goToLogin()" class="login-link">Inicia sesión</a>
+    </p>
+
+    <!-- Nombre y Apellidos -->
+    <div class="row-inputs">
+      <ion-item lines="none" class="custom-input-box">
+        <ion-input 
+          type="text" 
+          [(ngModel)]="firstName" 
+          placeholder="Nombre">
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="custom-input-box">
+        <ion-input 
+          type="text" 
+          [(ngModel)]="lastName" 
+          placeholder="Apellidos">
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <!-- Correo electrónico -->
+    <ion-item lines="none" class="custom-input-box ion-margin-top">
+      <ion-input 
+        type="email" 
+        [(ngModel)]="email" 
+        placeholder="nombre@example.com">
+      </ion-input>
+    </ion-item>
+
+    <!-- Contraseña -->
+    <ion-item lines="none" class="custom-input-box ion-margin-top">
+      <ion-input 
+        type="password" 
+        [(ngModel)]="password" 
+        placeholder="Contraseña">
+      </ion-input>
+    </ion-item>
+
+    <!-- Información legal -->
+    <div class="info-section">
+      <p class="info-text">
+        La información de tu Cuenta de Uber se usa para permitirte iniciar sesión y acceder a tus datos de manera segura. Uber guarda ciertos datos con fines de seguridad, soporte e información. Si aceptas, Uber también podrá usar la información de tu Cuenta de Uber para enviarte correos electrónicos y comunicaciones de marketing, lo que incluye contenido basado en tu uso de los servicios de Uber.
+      </p>
+    </div>
+
+    <!-- Botones de Acción -->
+    <div class="action-buttons">
+      <ion-button shape="round" class="btn-continue" (click)="onRegister()">
+        Continuar
+      </ion-button>
+      <ion-button fill="outline" shape="round" class="btn-cancel" (click)="goToLogin()">
+        Cancelar
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

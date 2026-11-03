@@ -1,0 +1,135 @@
+.top-bar {
+  --background: #000000;
+  --color: #ffffff;
+  padding-left: 10px;
+
+  .brand-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+}
+
+.login-content {
+  --background: #ffffff;
+}
+
+.login-container {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 40px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 25px;
+
+  .top-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+}
+
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Tarjeta agrupada para usuario y contraseña */
+.input-card {
+  border: 1px solid #b5b5b5;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+
+  .custom-item {
+    --background: #ffffff;
+    --inner-padding-end: 12px;
+    --padding-start: 12px;
+    --min-height: 48px;
+
+    ion-input {
+      --padding-top: 10px;
+      --padding-bottom: 10px;
+      font-size: 0.95rem;
+      color: #333333;
+    }
+  }
+}
+
+.signup-link-wrapper {
+  margin-bottom: 20px;
+
+  .signup-link {
+    color: #276ef1;
+    font-size: 0.85rem;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Sección informativa */
+.info-section {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+
+  .info-icon-wrapper {
+    flex-shrink: 0;
+
+    .info-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  }
+
+  .info-text {
+    font-size: 0.72rem;
+    color: #555555;
+    line-height: 1.35;
+    margin: 0;
+  }
+}
+
+/* Botones inferiores */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .btn-continue {
+    --background: #276ef1;
+    --background-hover: #1e5bb8;
+    --color: #ffffff;
+    --border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    height: 38px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .btn-cancel {
+    --border-color: #276ef1;
+    --color: #276ef1;
+    --border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    height: 38px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

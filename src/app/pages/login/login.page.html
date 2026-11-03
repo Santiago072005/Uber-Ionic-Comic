@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark" class="top-bar">
+    <ion-title class="brand-title">Uber</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <div class="login-container">
+    
+    <!-- Imagen superior (Círculo de puntos / Logo) -->
+    <div class="logo-wrapper">
+      <img src="assets/icon/uber-logo-circle.png" alt="Uber Logo" class="top-logo" />
+    </div>
+
+    <h2 class="form-title">Inicia sesión en tu cuenta de Uber</h2>
+
+    <!-- Formulario agrupado -->
+    <div class="input-card">
+      <ion-item lines="full" class="custom-item">
+        <ion-input 
+          type="text" 
+          [(ngModel)]="emailOrPhone" 
+          placeholder="Correo o número de teléfono">
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="custom-item">
+        <ion-input 
+          type="password" 
+          [(ngModel)]="password" 
+          placeholder="Contraseña">
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div class="signup-link-wrapper">
+      <a (click)="goToRegister()" class="signup-link">Crear tu cuenta de Uber</a>
+    </div>
+
+    <!-- Sección informativa con ícono -->
+    <div class="info-section">
+      <div class="info-icon-wrapper">
+        <img src="assets/icon/user-info-icon.png" alt="Info Icon" class="info-icon" />
+      </div>
+      <p class="info-text">
+        La información de tu Cuenta de Uber se usa para permitirte iniciar sesión y acceder a tus datos de manera segura. Uber guarda ciertos datos con fines de seguridad, soporte e información. Si aceptas, Uber también podrá usar la información de tu Cuenta de Uber para enviarte correos electrónicos y comunicaciones de marketing, lo que incluye contenido basado en tu uso de los servicios de Uber.
+      </p>
+    </div>
+
+    <!-- Botones de Acción -->
+    <div class="action-buttons">
+      <ion-button shape="round" class="btn-continue" (click)="onLogin()">
+        Continuar
+      </ion-button>
+      <ion-button fill="outline" shape="round" class="btn-cancel" (click)="goBack()">
+        Cancelar
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

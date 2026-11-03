@@ -1,0 +1,112 @@
+.top-bar {
+  --background: #000000;
+  --color: #ffffff;
+  padding-left: 10px;
+
+  .brand-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+}
+
+.register-content {
+  --background: #ffffff;
+}
+
+.register-container {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 40px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 0.88rem;
+  color: #555555;
+  text-align: center;
+  margin-bottom: 25px;
+
+  .login-link {
+    color: #276ef1;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.row-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.custom-input-box {
+  --background: #ffffff;
+  border: 1px solid #b5b5b5;
+  border-radius: 8px;
+  flex: 1;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  --min-height: 46px;
+
+  ion-input {
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    font-size: 0.92rem;
+    color: #333333;
+  }
+}
+
+.info-section {
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  .info-text {
+    font-size: 0.72rem;
+    color: #666666;
+    line-height: 1.35;
+    margin: 0;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .btn-continue {
+    --background: #276ef1;
+    --background-hover: #1e5bb8;
+    --color: #ffffff;
+    --border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    height: 38px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .btn-cancel {
+    --border-color: #276ef1;
+    --color: #276ef1;
+    --border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    height: 38px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

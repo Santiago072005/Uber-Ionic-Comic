@@ -1,21 +1,146 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Blank </ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark" class="uber-navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <span class="brand-logo" (click)="selectTab('Trayecto')">Uber</span>
+        <div class="nav-links">
+          <a [class.active]="activeTab === 'Trayecto'" (click)="selectTab('Trayecto')">Trayecto</a>
+          <a [class.active]="activeTab === 'Conduce'" (click)="selectTab('Conduce')">Conduce</a>
+          <a [class.active]="activeTab === 'Trayectos'" (click)="selectTab('Trayectos')">Trayectos</a>
+          <a [class.active]="activeTab === 'Negocio'" (click)="selectTab('Negocio')">Negocio</a>
+          <a [class.active]="activeTab === 'Uber Eats'" (click)="selectTab('Uber Eats')">Uber Eats</a>
+          <a [class.active]="activeTab === 'Quiénes somos'" (click)="selectTab('Quiénes somos')">Quiénes somos ▾</a>
+        </div>
+      </div>
+      <div class="nav-right">
+        <ion-button fill="clear" size="small" color="light">Ayuda</ion-button>
+        
+        <!-- Estado 1: No hay sesión iniciada -->
+        <ng-container *ngIf="!currentUser">
+          <ion-button fill="clear" size="small" color="light" (click)="goToLogin()">Inicia sesión</ion-button>
+          <ion-button fill="solid" size="small" color="light" class="btn-register" (click)="goToRegister()">Regístrate</ion-button>
+        </ng-container>
+
+        <!-- Estado 2: Usuario autenticado o recién registrado -->
+        <ng-container *ngIf="currentUser">
+          <span class="user-welcome" style="color: #ffffff; font-weight: 500; font-size: 0.9rem; margin-right: 8px;">
+            👤 {{ currentUser.name }}
+          </span>
+          <ion-button fill="clear" size="small" color="danger" (click)="logout()">Salir</ion-button>
+        </ng-container>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="dark">
+  <div class="main-container">
+    
+    <!-- Hero Section -->
+    <div class="hero-grid">
+      <!-- Columna Formulario -->
+      <div class="booking-card">
+        <div class="location-badge">
+          <ion-icon name="location-sharp"></ion-icon>
+          <span>{{ selectedCity }}</span>
+          <a class="change-city" (click)="changeCity()">Cambia de ciudad</a>
+        </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a>
-    </p>
+        <h1 class="hero-title">Ve a cualquier lugar</h1>
+
+        <button class="select-btn">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Pedir para llevar ahora</span>
+          <ion-icon name="chevron-down-outline" class="arrow-icon"></ion-icon>
+        </button>
+
+        <div class="inputs-group">
+          <div class="route-line">
+            <span class="dot"></span>
+            <span class="line"></span>
+            <span class="square"></span>
+          </div>
+          <div class="inputs-fields">
+            <div class="input-item">
+              <input type="text" placeholder="Punto de partida" [(ngModel)]="origin" />
+              <ion-icon name="navigate-outline"></ion-icon>
+            </div>
+            <div class="input-item">
+              <input type="text" placeholder="Entrega" [(ngModel)]="destination" />
+            </div>
+          </div>
+        </div>
+
+        <ion-button expand="block" color="light" class="btn-search" (click)="calculatePrice()">
+          Ver precios sugeridos
+        </ion-button>
+
+        <!-- Enlace condicional para consultar actividad -->
+        <a class="login-link" *ngIf="!currentUser" (click)="goToLogin()">
+          Inicia sesión para consultar tu actividad
+        </a>
+        <span class="login-link" *ngIf="currentUser" style="cursor: default; color: #276ef1;">
+          ¡Bienvenido de nuevo, {{ currentUser.name }}!
+        </span>
+      </div>
+
+      <!-- Columna Galería -->
+      <div class="hero-images">
+        <div class="img-box img-1">
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=600&auto=format&fit=crop" alt="Conduciendo" />
+        </div>
+        <div class="img-box img-2">
+          <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=600&auto=format&fit=crop" alt="Repartidor" />
+        </div>
+        <div class="img-box img-3">
+          <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600&auto=format&fit=crop" alt="Pasajero" />
+        </div>
+        <div class="img-box img-4">
+          <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?q=80&w=600&auto=format&fit=crop" alt="Viajero" />
+        </div>
+        <div class="banner-box">
+          <div class="banner-content">
+            <p>¿Listo para viajar?</p>
+            <button class="btn-banner" (click)="currentUser ? calculatePrice() : goToLogin()">
+              {{ currentUser ? 'Pedir viaje ahora' : 'Programa con anticipación' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Servicios -->
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <div class="card-info">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.desc }}</p>
+          <button class="btn-details" (click)="showDetail(service)">Detalles</button>
+        </div>
+        <div class="card-icon-img">
+          <img [src]="service.img" [alt]="service.title" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal / Ventana Emergente de Detalles -->
+  <div class="custom-modal-backdrop" *ngIf="activeDetail" (click)="closeDetail()">
+    <div class="custom-modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>{{ activeDetail.title }}</h2>
+        <button class="close-btn" (click)="closeDetail()">✕</button>
+      </div>
+      <div class="modal-body">
+        <img [src]="activeDetail.img" class="modal-icon" />
+        <p>{{ activeDetail.details }}</p>
+      </div>
+      <div class="modal-footer">
+        <ion-button expand="block" color="light" (click)="currentUser ? calculatePrice() : goToLogin()">
+          Solicitar {{ activeDetail.title }}
+        </ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>
